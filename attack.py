@@ -13,22 +13,18 @@ def warnPrint(skk):
 
 
 
-
-
-
-
 # Get the price of a coin/token from a single exchange
 	
-def getPrice(exName, url, coinName, coolDownTime):	
+def getPrice(exName, url, coinName):	
 	coolPrint("price of " + coinName + " from " + exName)
 	coolPrint((requests.get(url).text))
-	time.sleep(coolDownTime)
+	sys.exit()
 
 
 
 # Compare the price of two exchanges
 
-def comparePrice(exName1, exName2, url1, url2, coinName, coolDownTime, priceMargin):
+def comparePrice(exName1, exName2, url1, url2, coinName, priceMargin):
 	coolPrint("comparing " + coinName + " between " + exName1 + " and " + exName2)
 
 	price1 = float(requests.get(url1).text)
@@ -45,21 +41,23 @@ def comparePrice(exName1, exName2, url1, url2, coinName, coolDownTime, priceMarg
 		print((Fore.GREEN) + "[alert] attack reccomended" + (Style.RESET_ALL))
 
 
-	time.sleep(coolDownTime)
+	sys.exit()
 
 acaii = '''
-   _________
-  / ======= \
- / __________\
-| ___________ |
-| |crypto   | |
-| |arbitrage| |
-| |tool     | |
-| |_________| |__________________________
-\=____________/   by @mac-lawson         )
-  / """"""""""" \                          /
- / ::::::::::::: \  github.com/mac-lawson -'
-(_________________)
+
+     ,     ,
+    (\____/)
+     (_oo_)
+       (O)
+     __||__    \)
+  []/______\[] /
+  / \______/ \/
+ /    /__\
+(\   /____\
+
+ARBCrypto: by Mac Lawson
+https://github.com/mac-lawson
+
 
 '''
 
@@ -67,39 +65,38 @@ acaii = '''
 
 #############
 
-'''
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-██░▄▄░██░████░▄▄▀██░▄▄▀██░▄▄▄████░▄▄▀██░▄▄▄░██░▄▄▀██░▄▄▄████░██░██░▄▄▄██░▄▄▀██░▄▄▄
-██░▀▀░██░████░▀▀░██░█████░▄▄▄████░█████░███░██░██░██░▄▄▄████░▄▄░██░▄▄▄██░▀▀▄██░▄▄▄
-██░█████░▀▀░█░██░██░▀▀▄██░▀▀▀████░▀▀▄██░▀▀▀░██░▀▀░██░▀▀▀████░██░██░▀▀▀██░██░██░▀▀▀
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-'''
+
 
 def run():
-	
+	if len(sys.argv) == 1:
+		warnPrint("NO COMMANDS PROVIDED")
+		warnPrint("Help: python3 attack.py -h")
+
+		sys.exit()
+	if (sys.argv[1]) == "-g":
+		getPrice(sys.argv[2], sys.argv[3], sys.argv[4])
+	if (sys.argv[1]) == "-c":
+		getPrice(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])		
+	if (sys.argv[1] == "-h"):
+		warnPrint("HELP")
+		warnPrint("_________________")
+		warnPrint("-g Get Price (-g exName url coinName coolDownTime)")
+		warnPrint("-c Compare Price (-g exName1 exName2 url1 url2 coinName priceMargin)")
+
+		sys.exit()
+
+
 
 	
-# Place functions to run here
 
 
-
-
-'''
-▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-██░▄▄░██░████░▄▄▀██░▄▄▀██░▄▄▄████░▄▄▀██░▄▄▄░██░▄▄▀██░▄▄▄████░██░██░▄▄▄██░▄▄▀██░▄▄▄
-██░▀▀░██░████░▀▀░██░█████░▄▄▄████░█████░███░██░██░██░▄▄▄████░▄▄░██░▄▄▄██░▀▀▄██░▄▄▄
-██░█████░▀▀░█░██░██░▀▀▄██░▀▀▀████░▀▀▄██░▀▀▀░██░▀▀░██░▀▀▀████░██░██░▀▀▀██░██░██░▀▀▀
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-'''
 #############
 
 
-
+# print(sys.argv)
+# print(len(sys.argv))
 coolPrint(acaii)
-time.sleep(2)
-
 while True:
-	
 	run()
 
 
