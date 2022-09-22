@@ -81,7 +81,7 @@ def run():
 		warnPrint("HELP")
 		warnPrint("_________________")
 		warnPrint("-g Get Price (-g exName url coinName coolDownTime)")
-		warnPrint("-c Compare Price (-g exName1 exName2 url1 url2 coinName priceMargin)")
+		warnPrint("-c Compare Price (-c exName1 exName2 url1 url2 coinName priceMargin)")
 
 		sys.exit()
 
