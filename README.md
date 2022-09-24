@@ -23,7 +23,7 @@ For example, the Coinbase buy api can be used in the form of a curl request:
 Now you can run Arbitrage with the url:
 
 ##### Get price:
-`python3 attack.py -g exName url coinName coolDownTime`
+`python3 attack.py -g url`
 
 ##### Compare price price:
 `python3 attack.py -c exName1 exName2 url1 url2 coinName priceMargin`
