@@ -2,7 +2,7 @@ from logging import warning
 import requests
 import time
 import sys
-
+from colorama import Fore, Style
 def errWarning(type):
 	if(type == "noCmds"):
 		warnPrint("No commands were provided, or if they were, the syntax was incorrect")
@@ -11,7 +11,7 @@ def errWarning(type):
 		warnPrint("HELP")
 		warnPrint("_________________")
 		warnPrint("-g Get Price (-g URL)")
-		warnPrint("-c Compare Price (-c exName1 exName2 url1 url2 coinName priceMargin)")	
+		warnPrint("-c Compare Price (-c URL1, URL2, Price Margin)")	
 def coolPrint(skk): 
 	print("\033[94m {}\033[00m" .format(skk))
 
@@ -27,8 +27,7 @@ def getPrice(url):
 
 # Compare the price of two exchanges
 
-def comparePrice(exName1, exName2, url1, url2, coinName, priceMargin):
-	coolPrint("comparing " + coinName + " between " + exName1 + " and " + exName2)
+def comparePrice(url1, url2, priceMargin):
 
 	price1 = float(requests.get(url1).text)
 	price2 = float(requests.get(url2).text)
